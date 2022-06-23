@@ -9,7 +9,10 @@ import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger';
 import axios from 'axios';
 
-// watchsaga function*
+// watchersaga function*, will watch for actions
+function watcherSaga() {
+
+}
 
 // Create store
 const store = createStore(
@@ -20,6 +23,9 @@ const store = createStore(
 
 // Saga middleware
 const sagaMiddleware = createSagaMiddleware;
+
+// Run saga middleware
+sagaMiddleware.arguments(watcherSaga);
 
 ReactDOM.render
     (
