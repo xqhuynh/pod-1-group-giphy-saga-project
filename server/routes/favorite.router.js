@@ -5,6 +5,12 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
+  
+  //variable to store query from favorite_gif
+  const getFavortes =  `
+  SELECT "giphyId", "category".name from favorite_gif
+  JOIN category ON favorite_gif."categoryId" = category.id;
+  `
   res.sendStatus(200);
 });
 
