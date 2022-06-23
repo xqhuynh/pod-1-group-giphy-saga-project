@@ -1,6 +1,9 @@
 import React from 'react';
-
 import FavoriteGifs from '../FavoriteGifs/FavoriteGifs';
+
+import SearchGifs from '../SearchGifs/SearchGifs';
+import { useState } from 'react';
+
 import Header from '../Header/Header';
 import SearchGifs from '../SearchGifs/SearchGifs';
 import './App.css';
@@ -13,28 +16,17 @@ import { useEffect } from 'react';
 import { Route, HashRouter as Router, Link } from 'react-router-dom';
 
 function App(props) {
-  const [newGif, setNewGif] = useState([]);
-
-  // Renders the entire app on the DOM
-  // will move over to index.js
-  useEffect(() => {
-    axios({
-      method: 'GET',
-      url: '/search'
-    })
-      .then((res) => {
-        setNewGif(res.data)
-        console.log('meta data', res.data);
-      })
-      .catch((err) => {
-        console.log('GET error client side', err);
-      })
-
-  }, [])
 
   return (
-
     <>
+
+      <div>
+        <h1>Giphy Search!</h1>
+      </div>
+      <FavoriteGifs />
+      <SearchGifs />
+
+
     <Router>
 
       <Header/>
@@ -48,6 +40,7 @@ function App(props) {
       </Route>
 
     </Router>
+
     </>
   );
 }
