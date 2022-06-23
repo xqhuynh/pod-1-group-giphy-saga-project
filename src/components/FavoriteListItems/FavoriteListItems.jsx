@@ -1,14 +1,5 @@
-
-
-
 const FavoriteListItems = () => {
-
-
-    return (
-        <>
-            Testing List Items
-        </>
-    )
-}
+  return <>Testing List Items</>;
+};
 
 export default FavoriteListItems;
