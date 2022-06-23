@@ -5,12 +5,35 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  
+
   //variable to store query from favorite_gif
-  const getFavortes =  `
+  const getFavorites =  `
   SELECT "giphyId", "category".name from favorite_gif
   JOIN category ON favorite_gif."categoryId" = category.id;
   `
+  pool.query(getFavorites)
+    .then((result)=>{
+
+     
+      console.log(result.rows);
+    //loop through object and get all ids
+    //and join them with commas
+     const getIds = result.rows.map(id => (
+        id.giphyId
+      )).join(',')
+
+       
+
+      console.log(getIds);
+
+    }).catch((err)=>{
+
+      console.log('Get favorite_gift table failed', err);
+
+      res.sendStatus(500)
+
+    })
+
   res.sendStatus(200);
 });
 
