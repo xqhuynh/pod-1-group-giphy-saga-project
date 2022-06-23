@@ -8,9 +8,6 @@ const FavoriteList = () => {
 
     return (
         <>
-            <select name="fav-gifs" id="fav-gifs">
-                <option value=""></option>
-            </select>
             {favorites.data && favorites.map((fav) => (
                 <FavoriteListItems fav={fav}/>
             ))}
