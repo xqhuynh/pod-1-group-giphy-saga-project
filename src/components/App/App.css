@@ -4,8 +4,42 @@
 
 .page_header {
     text-align: center;
+    background-image: linear-gradient(to bottom right, grey, lightgrey);
+    border-radius: 2px;
 }
 
 .nav_link {
     margin: 10px;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+.list-gif {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gif-item {
+    display: flexbox;
+    justify-content: center;
+    width: 180px;
+    margin: 10px;
+    padding: 3px;
+    border: 1px solid; 
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+.gif-image {
+    max-width:100%;
+    max-height:100%;
+}
+
+.favorite-button {
+    width: 170px;
+    height: 30px;
+    background-color: lightpink;
+    border-radius: 10px;
+    cursor: pointer;
 }
