@@ -10,22 +10,31 @@ import logger from 'redux-logger';
 import axios from 'axios';
 
 // watchersaga function*, will watch for actions
-function watcherSaga() {
+function* watcherSaga() {
 
 }
+
+// Reducer that holds our results
+const search = (state = {}, action) => {
+    if (action.type === 'SET_SEARCH') {
+        return action.payload;
+    }
+    return state;
+}
+// Saga middleware
+const sagaMiddleware = createSagaMiddleware();
 
 // Create store
 const store = createStore(
     combineReducers({
+        search
     }),
     applyMiddleware(sagaMiddleware, logger)
-)
+);
 
-// Saga middleware
-const sagaMiddleware = createSagaMiddleware;
 
 // Run saga middleware
-sagaMiddleware.arguments(watcherSaga);
+sagaMiddleware.run(watcherSaga);
 
 ReactDOM.render
     (
