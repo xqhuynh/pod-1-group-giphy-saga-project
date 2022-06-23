@@ -23,6 +23,12 @@ const search = (state = {}, action) => {
     }
     return state;
 }
+
+// Reducer that holds favorites
+const favorites = (state = {}, action) => {
+
+    return state;
+}
 // Saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -32,10 +38,8 @@ const sagaMiddleware = createSagaMiddleware();
 // Create store
 const store = createStore(
     combineReducers({
-
-
-        search
-
+        search,
+        favorites,
     }),
     applyMiddleware(sagaMiddleware, logger)
 );
