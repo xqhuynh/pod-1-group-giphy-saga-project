@@ -1,12 +1,10 @@
-
-
-
-const FavoriteListItems = () => {
+const FavoriteListItems = ({ fav }) => {
 
 
     return (
         <>
-            Testing List Items
+            <li>{fav.data.data.images.url}<input type="dropdown"  /></li>
+            
         </>
     )
 }
