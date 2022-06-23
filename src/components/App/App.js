@@ -1,12 +1,8 @@
 import React from 'react';
-
 import FavoriteGifs from '../FavoriteGifs/FavoriteGifs';
-
-
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-
 
 function App(props) {
   const [newGif, setNewGif] = useState([]);
@@ -29,7 +25,6 @@ function App(props) {
   }, [])
 
   return (
-
     <>
       <div>
         <h1>Giphy Search!</h1>
@@ -37,10 +32,6 @@ function App(props) {
       <FavoriteGifs />
 
     </>
-
-    <div>
-    </div>
-
   );
 }
 
