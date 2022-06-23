@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -21,3 +22,18 @@ function SearchGifs() {
 }
 
 export default SearchGifs;
+
+
+
+const SearchGifs = () => {
+
+
+    return (
+        <>
+        
+        </>
+    )
+}
+
+export default SearchGifs;
+

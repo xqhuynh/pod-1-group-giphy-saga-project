@@ -1,11 +1,17 @@
 import FavoriteListItems from "../FavoriteListItems/FavoriteListItems";
+import { useSelector } from "react-redux";
 
 
 const FavoriteList = () => {
+    const favorites = useSelector(store => store.favorites)
+
 
     return (
         <>
-            <FavoriteListItems />
+            {favorites.data && favorites.map((fav) => (
+                <FavoriteListItems fav={fav}/>
+            ))}
+           
         </>
     )
 }
