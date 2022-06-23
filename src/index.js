@@ -26,18 +26,13 @@ const search = (state = {}, action) => {
 // Saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-function something(state = 0) {
-    return state
-}
 
-// Saga middleware
-const sagaMiddleware = createSagaMiddleware();
+
 
 // Create store
 const store = createStore(
     combineReducers({
 
-        something
 
         search
 
