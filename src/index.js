@@ -10,9 +10,11 @@ import logger from 'redux-logger';
 import axios from 'axios';
 
 // watchersaga function*, will watch for actions
+
 function* watcherSaga() {
 
 }
+
 
 // Reducer that holds our results
 const search = (state = {}, action) => {

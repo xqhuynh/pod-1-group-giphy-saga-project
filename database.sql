@@ -15,3 +15,15 @@ VALUES ('funny'), ('cohort'), ('cartoon'), ('nsfw'), ('meme');
 
 -- Display record
 SELECT * FROM category;
+
+
+--favorite gif table
+CREATE TABLE "favorite_gif"(
+"id" SERIAL PRIMARY KEY,
+"giphyId" VARCHAR,
+"categoryId" INT REFERENCES category
+);
+
+--values to insert
+INSERT INTO favorite_gif ("giphyId","categoryId")
+VALUES ('xTiTnf9SCIVk8HIvE4',1),('3o7527pa7qs9kCG78A',1),('4Zo41lhzKt6iZ8xff9',3)
