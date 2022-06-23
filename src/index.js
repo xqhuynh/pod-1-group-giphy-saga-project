@@ -9,6 +9,20 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 // import axios from 'axios';
 
+// Function to fetch giphy's 
+function* fetchGif(action) {     // STEP 3 ------------
+    console.log('made it to fetch elements');
+    console.log('action', action);
+
+    const res = yield axios.get('/api/search');
+    console.log('response is', res.data);
+
+    yield put({
+        type: 'SET_ELEMENTS',
+        payload: res.data
+    })
+}
+
 // watchersaga function*, will watch for actions
 function* watcherSaga() {
 

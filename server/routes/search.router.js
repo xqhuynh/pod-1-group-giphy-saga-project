@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         params: {
             api_key: process.env.GIPHY_API_KEY,
             q: 'deadpool',
-            limit: 5,
+            limit: 1,
             offset: 0,
             rating: 'g',
             language: 'en'
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     })
         .then((response) => {
             console.log('Response is', response);
-            res.send(response.data)
+            res.send(response.data.data.images.original.url)
         })
         .catch((err) => {
             console.log('Error in GET Gif items', err);
