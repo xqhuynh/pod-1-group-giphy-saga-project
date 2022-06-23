@@ -1,6 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
-
+//add axios
+const axios = require('axios')
+//add dotenv
+require('dotenv').config()
 const router = express.Router();
 
 // return all favorite images
@@ -16,15 +19,31 @@ router.get('/', (req, res) => {
 
      
       console.log(result.rows);
-    //loop through object and get all ids
+    //loop through object to get and all ids
     //and join them with commas
      const getIds = result.rows.map(id => (
         id.giphyId
       )).join(',')
 
-       
-
       console.log(getIds);
+
+      axios({
+        url:'https://api.giphy.com/v1/gifs',
+        method:'GET',
+        params:{
+          api_key:process.env.GIPHY_API_KEY,
+          ids: getIds
+        }
+      }).then((response)=>{
+
+        console.log(response.data);
+        res.send(response.data)
+
+      }).catch((err)=>{
+
+        console.log( err);
+
+      })
 
     }).catch((err)=>{
 
@@ -34,7 +53,7 @@ router.get('/', (req, res) => {
 
     })
 
-  res.sendStatus(200);
+  
 });
 
 // add a new favorite
