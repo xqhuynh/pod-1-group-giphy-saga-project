@@ -5,9 +5,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 // import saga middleware from redux-saga
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put } from 'redux-saga/effects';
+// import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger';
-import axios from 'axios';
+// import axios from 'axios';
 
 // watchersaga function*, will watch for actions
 
@@ -26,10 +26,21 @@ const search = (state = {}, action) => {
 // Saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
+function something(state = 0) {
+    return state
+}
+
+// Saga middleware
+const sagaMiddleware = createSagaMiddleware();
+
 // Create store
 const store = createStore(
     combineReducers({
+
+        something
+
         search
+
     }),
     applyMiddleware(sagaMiddleware, logger)
 );
