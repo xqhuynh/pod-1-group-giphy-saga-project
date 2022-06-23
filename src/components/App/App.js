@@ -37,7 +37,7 @@ function App(props) {
     <>
     <Router>
 
-        <Header/>
+      <Header/>
 
       <Route path="/api/favorite" exact>
         <FavoriteGifs />

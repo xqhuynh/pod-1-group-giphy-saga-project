@@ -5,7 +5,7 @@ const SearchGifs = () => {
 
     return (
         <>
-            Hello
+        
         </>
     )
 }
