@@ -7,6 +7,7 @@ function App(props) {
   const [newGif, setNewGif] = useState([]);
 
   // Renders the entire app on the DOM
+  // will move over to index.js
   useEffect(() => {
     axios({
       method: 'GET',
