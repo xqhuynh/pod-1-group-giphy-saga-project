@@ -18,7 +18,6 @@ const FavoriteListItems = ({ fav }) => {
 
 
   return (
-    <>
       <li className="gif-item" >
         <img className="gif-image" src={fav.images.original.url} />
         <select name="fav-gifs" id="fav-gifs"
@@ -36,7 +35,6 @@ const FavoriteListItems = ({ fav }) => {
             ✅✅✅✅✅✅
         </button>
       </li>
-    </>
   );
 };
 
