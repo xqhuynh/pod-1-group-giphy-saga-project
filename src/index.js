@@ -78,11 +78,34 @@ function* getFavoriteGifs(action) {
     })
 }
 
+/*
+    When addCategory is called it does axios
+    put request and return favorite gifs with
+    updated category
+*/
+function* addCategory(action) {
+
+    try{
+
+        yield axios.put('/api/favorite/'+ action.payload)
+
+    } catch(err){
+        console.log(err);
+    }
+
+    yield put({
+        type:'GET_FAVORITE_GIFS'
+
+    })
+    
+}
+
 
 // watchersaga function*, will watch for actions
 function* watcherSaga() {
     yield takeEvery('GET_FAVORITE_GIFS', getFavoriteGifs)
     yield takeEvery("FETCH_RESULTS", fetchResults)
+    yield takeEvery("ADD_CATEGORY", addCategory)
 }
 
 // Saga middleware
