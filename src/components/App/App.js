@@ -19,13 +19,16 @@ function App(props) {
       <Header />
 
       <Router>
+    
         <Route path="/api/favorite" exact>
           <FavoriteGifs />
         </Route>
+    
         <Route path="/api/search" exact>
-          <SearchForm />
-        <SearchResultsList />
+          <SearchForm /> 
+          <SearchResultsList />
         </Route>
+    
       </Router>
 
     </>
