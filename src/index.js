@@ -47,7 +47,7 @@ function* fetchResults(action) {
 // Reducer that holds our results w/ 'SET_RESULTS' dispatch action
 // gets payload from fetchResults generator function
 const search = (state = [], action) => {
-    switch (action.payload) {
+    switch (action.type) {
         case 'SET_RESULTS':
             return action.payload
         default:
