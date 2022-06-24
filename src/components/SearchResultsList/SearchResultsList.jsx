@@ -2,6 +2,7 @@ import SearchResultsItem from "../SearchResultsItem/SearchResultsItem";
 import { useSelector } from "react-redux";
 
 const SearchResultsList = () => {
+
   const searchResults = useSelector((store) => store.search);
 
   return (

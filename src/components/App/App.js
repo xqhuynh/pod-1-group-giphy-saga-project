@@ -16,20 +16,19 @@ function App(props) {
 
   return (
     <>
-      <div>
-        <h1>Giphy Search!</h1>
-      </div>
       <Header />
 
       <Router>
+    
         <Route path="/api/favorite" exact>
           <FavoriteGifs />
         </Route>
+    
         <Route path="/api/search" exact>
           <SearchForm /> 
           <SearchResultsList />
         </Route>
-       
+    
       </Router>
 
     </>
