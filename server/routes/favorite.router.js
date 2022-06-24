@@ -62,7 +62,7 @@ router.put('/:favId', (req, res) => {
   const updateCategory = `
     UPDATE favorite_gif
     SET "categoryId" = $2
-    WHERE id = $1;
+    WHERE "giphyId" = $1;
   `
 
   const paramQuery = [
