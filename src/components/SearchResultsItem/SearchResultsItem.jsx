@@ -11,6 +11,7 @@ const SearchResultsItem = (gif) => {
     });
   }
 
+  console.log("in SearchResultsItme", gif.gif.images.original.url);
   return (
     <>
       <div className="gif-item">

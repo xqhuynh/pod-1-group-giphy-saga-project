@@ -1,45 +1,96 @@
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .page_header {
-    text-align: center;
-    background-image: linear-gradient(to bottom right, grey, lightgrey);
-    border-radius: 2px;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, grey, lightgrey);
+  border-radius: 2px;
 }
 
 .nav_link {
-    margin: 10px;
+  margin: 10px;
 }
 
 body {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .list-gif {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .gif-item {
-    display: flexbox;
-    justify-content: center;
-    width: 180px;
-    margin: 10px;
-    padding: 3px;
-    border: 1px solid; 
-    border-radius: 5px;
-    background-color: lightgrey;
+  display: flexbox;
+  justify-content: center;
+  width: 250px;
+  margin: 10px;
+  padding: 3px;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: lightgrey;
 }
 .gif-image {
-    max-width:100%;
-    max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .favorite-button {
-    width: 170px;
-    height: 30px;
-    background-color: lightpink;
-    border-radius: 10px;
-    cursor: pointer;
+  width: 170px;
+  height: 30px;
+  background-color: lightpink;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.gif-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-around;
+}
+
+.search-input {
+  margin: 25px 15px;
+}
+
+.search-box {
+  margin-right: 10px;
+  width: 200px;
+  height: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.search-btn {
+  height: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: rgb(120, 135, 210);
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  margin: 20px;
+}
+
+.nav-link:hover {
+  color: rgb(97, 97, 227);
+}
+
+.nav-container {
+  padding-bottom: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+.search-header {
+  padding-top: 25px;
 }

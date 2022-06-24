@@ -23,16 +23,18 @@ function SearchForm() {
     <>
       {/* create form, input, button
       handle clicks in form and button tag */}
-      <h2>Savon Testing Search Form</h2>
-      <form onSubmit={handleSearchClick}>
+      <form className="search-input" onSubmit={handleSearchClick}>
         {/* set onChange to useState initial value */}
         <input
+          className="search-box"
           type="text"
           placeholder="Search for GIF"
           value={searchInput}
           onChange={(evt) => setNewSearchInput(evt.target.value)}
         />
-        <button onClick={handleSearchClick}>Search</button>
+        <button className="search-btn" onClick={handleSearchClick}>
+          Search
+        </button>
       </form>
     </>
   );
