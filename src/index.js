@@ -9,11 +9,25 @@ import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger';
 import axios from 'axios';
 
-// watchersaga function*, will watch for actions
-// first action to watch is fetching data from api
-function* watcherSaga() {
-    yield takeEvery("FETCH_RESULTS", fetchResults);
+
+
+// Function to fetch giphy's 
+function* fetchGif(action) {     // STEP 3 ------------
+    console.log('made it to fetch elements');
+    console.log('action', action);
+
+    const res = yield axios.get('/api/search');
+    console.log('response is', res.data);
+
+    yield put({
+        type: 'SET_ELEMENTS',
+        payload: res.data
+    })
 }
+
+
+
+
 
 // Generator function to fetch results
 // payload is user input in search box 
@@ -43,9 +57,34 @@ const search = (state = [], action) => {
 
 // Reducer that holds favorites
 const favorites = (state = {}, action) => {
-
+    switch(action.type){
+        case 'SET_FAVORITES':
+            return action.payload
+    }
     return state;
 }
+
+function* getFavoriteGifs(action) {
+    let res;
+    try{
+        res = yield axios.get('/api/favorite')
+    }
+    catch{
+        console.log('Failed to get Gifs', error)
+    }
+    yield put({
+        type:'SET_FAVORITES',
+        payload: res.data
+    })
+}
+
+
+// watchersaga function*, will watch for actions
+function* watcherSaga() {
+    yield takeEvery('GET_FAVORITE_GIFS', getFavoriteGifs)
+    yield takeEvery("FETCH_RESULTS", fetchResults)
+}
+
 // Saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
