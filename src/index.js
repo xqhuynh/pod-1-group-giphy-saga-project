@@ -5,20 +5,33 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 // import saga middleware from redux-saga
 import createSagaMiddleware from 'redux-saga';
-// import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger';
-// import axios from 'axios';
+import axios from 'axios';
 
 // watchersaga function*, will watch for actions
 function* watcherSaga() {
-
+    yield takeEvery("FETCH_RESULTS", fetchResults);
 }
 
-// Reducer that holds our results
+function* fetchResults(action) {
+    try {
+        console.log("Payload is search input", action.payload);
+        let searchTerm = action.payload;
+        const response = yield axios.get(`/api/search/${searchTerm}`);
+        //sends results to search reducer below
+        yield put({ type: "SET_RESULTS", payload: response.data.data });
+    } catch (err) {
+        console.log(err);
+        put({ type: "ERROR" });
+    }
+}
+
+// Reducer that holds our results w/ 'SET_RESULTS' dispatch type
 const search = (state = [], action) => {
     switch (action.payload) {
-        case 'SET_GIF_RESULTS':
-            return [...state, action.payload]
+        case 'SET_RESULTS':
+            return action.payload
         default:
             return state
     }

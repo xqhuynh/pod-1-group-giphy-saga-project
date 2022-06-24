@@ -7,7 +7,7 @@ router.get('/:tag', (req, res) => {
     const { tag } = req.params;
     axios({
         method: 'GET',
-        url: `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=${tag}`
+        url: `http://api.giphy.com/v1/gifs/search?api_key=0ss3FHMaxpBMuFL2NtwYK3mO6kFlwPhc&q=${tag}&limit=5`,
     })
         .then((response) => {
             console.log('URL is', response);
