@@ -87,7 +87,7 @@ function* addCategory(action) {
 
     try{
 
-        yield axios.put('/api/favorite/'+ action.payload)
+        yield axios.put('/api/favorite/'+ action.payload.id)
 
     } catch(err){
         console.log(err);
