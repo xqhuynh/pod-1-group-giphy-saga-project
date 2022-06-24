@@ -9,8 +9,6 @@ import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger';
 import axios from 'axios';
 
-
-
 // Function to fetch giphy's 
 function* fetchGif(action) {     // STEP 3 ------------
     console.log('made it to fetch elements');
@@ -24,10 +22,6 @@ function* fetchGif(action) {     // STEP 3 ------------
         payload: res.data
     })
 }
-
-
-
-
 
 // Generator function to fetch results
 // payload is user input in search box 
@@ -57,7 +51,7 @@ const search = (state = [], action) => {
 
 // Reducer that holds favorites
 const favorites = (state = {}, action) => {
-    switch(action.type){
+    switch (action.type) {
         case 'SET_FAVORITES':
             return action.payload
     }
@@ -66,14 +60,14 @@ const favorites = (state = {}, action) => {
 
 function* getFavoriteGifs(action) {
     let res;
-    try{
+    try {
         res = yield axios.get('/api/favorite')
     }
-    catch{
+    catch {
         console.log('Failed to get Gifs', error)
     }
     yield put({
-        type:'SET_FAVORITES',
+        type: 'SET_FAVORITES',
         payload: res.data
     })
 }
