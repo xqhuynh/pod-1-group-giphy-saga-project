@@ -26,9 +26,10 @@ function App(props) {
           <FavoriteGifs />
         </Route>
         <Route path="/api/search" exact>
-          <SearchForm />
+          <SearchForm /> 
+          <SearchResultsList />
         </Route>
-        <SearchResultsList />
+       
       </Router>
 
     </>
