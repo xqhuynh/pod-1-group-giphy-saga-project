@@ -5,7 +5,7 @@ const SearchResultsItem = (gif) => {
       payload: gif.id,
     });
   }
-  console.log('in SearchResultsItme', gif.gif.images.original.url)
+  console.log("in SearchResultsItme", gif.gif.images.original.url);
   return (
     <>
       <div className="gif-item">
