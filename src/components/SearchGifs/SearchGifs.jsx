@@ -1,15 +1,13 @@
-
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-// Renders the entire app on the DOM
-// will move over to index.js
+// dispatch action to request gifs from API
 function SearchGifs() {
   const [newGif, setNewGif] = useState();
   const dispatch = useDispatch();
   dispatch({
-    type: "SET_ELEMENTS",
+    type: "SET_GIF_RESULTS",
     payload: newGif,
   });
   useEffect(() => {}, []);
@@ -17,23 +15,12 @@ function SearchGifs() {
   return (
     <>
       <h2>Testing Search Gifs component</h2>
+      <form>
+        <input />
+        <button></button>
+      </form>
     </>
   );
 }
 
 export default SearchGifs;
-
-
-
-const SearchGifs = () => {
-
-
-    return (
-        <>
-        
-        </>
-    )
-}
-
-export default SearchGifs;
-
