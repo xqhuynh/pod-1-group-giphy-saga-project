@@ -10,16 +10,16 @@ const FavoriteListItems = ({ fav }) => {
             return
         }
         console.log('category is', category)
-    //     dispatch({
-    //         type:'ADD_CATEGORY',
-    //         payload: category
-    //     })
+        dispatch({
+            type:'ADD_CATEGORY',
+            payload: {category, id: fav.id}
+        })
     }
 
 
   return (
     <>
-      <li className="gif-item">
+      <li className="gif-item" >
         <img className="gif-image" src={fav.images.original.url} />
         <select name="fav-gifs" id="fav-gifs"
             value={category}

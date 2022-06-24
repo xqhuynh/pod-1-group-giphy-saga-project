@@ -21,9 +21,9 @@ const FavoriteList = () => {
     return (
         <>
             <ul>
-                {favorites.data && favorites.data.map((fav) => (
+                {favorites.data && favorites.data.map((fav, i) => (
                     <>
-                        <FavoriteListItems key={fav.id} fav={fav}/>
+                        <FavoriteListItems key={i} fav={fav}/>
                     </>
                 ))}
             </ul>
