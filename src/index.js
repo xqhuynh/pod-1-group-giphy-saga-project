@@ -78,11 +78,24 @@ function* getFavoriteGifs(action) {
     })
 }
 
+function* addFavorite(action) {
+    console.log('in addFavorites', action.payload);
+    yield axios({
+        method: 'POST',
+        url: 'api/favorite',
+        data: {giphy_id: action.payload}
+    })
+    yield put({
+        type: 'GET_FAVORITE_GIFS'
+    })
+}
+
 
 // watchersaga function*, will watch for actions
 function* watcherSaga() {
     yield takeEvery('GET_FAVORITE_GIFS', getFavoriteGifs)
     yield takeEvery("FETCH_RESULTS", fetchResults)
+    yield takeEvery("ADD_FAVORITE", addFavorite)
 }
 
 // Saga middleware

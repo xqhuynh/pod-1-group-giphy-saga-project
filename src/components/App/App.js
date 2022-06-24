@@ -16,9 +16,6 @@ function App(props) {
 
   return (
     <>
-      <div>
-        <h1>Giphy Search!</h1>
-      </div>
       <Header />
 
       <Router>
@@ -27,8 +24,8 @@ function App(props) {
         </Route>
         <Route path="/api/search" exact>
           <SearchForm />
-        </Route>
         <SearchResultsList />
+        </Route>
       </Router>
 
     </>
