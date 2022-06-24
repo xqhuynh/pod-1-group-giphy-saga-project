@@ -5,15 +5,10 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 // import saga middleware from redux-saga
 import createSagaMiddleware from 'redux-saga';
-// import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 import logger from 'redux-logger';
-// import axios from 'axios';
+import axios from 'axios';
 
-// watchersaga function*, will watch for actions
-
-function* watcherSaga() {
-
-}
 
 
 // Reducer that holds our results
@@ -26,9 +21,33 @@ const search = (state = {}, action) => {
 
 // Reducer that holds favorites
 const favorites = (state = {}, action) => {
-
+    switch(action.type){
+        case 'SET_FAVORITES':
+            return action.payload
+    }
     return state;
 }
+
+function* getFavoriteGifs(action) {
+    let res;
+    try{
+        res = yield axios.get('/api/favorite')
+    }
+    catch{
+        console.log('Failed to get Gifs', error)
+    }
+    yield put({
+        type:'SET_FAVORITES',
+        payload: res.data
+    })
+}
+
+
+// watchersaga function*, will watch for actions
+function* watcherSaga() {
+    yield takeEvery('GET_FAVORITE_GIFS', getFavoriteGifs)
+}
+
 // Saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
