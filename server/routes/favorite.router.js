@@ -10,50 +10,41 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
   //variable to store query from favorite_gif
-  const getFavorites =  `
+  const getFavorites = `
   SELECT "giphyId", "category".name from favorite_gif
   JOIN category ON favorite_gif."categoryId" = category.id;
   `
   pool.query(getFavorites)
-    .then((result)=>{
+    .then((result) => {
 
-     
       console.log(result.rows);
-    //loop through object to get and all ids
-    //and join them with commas
-     const getIds = result.rows.map(id => (
+      //loop through object to get and all ids
+      //and join them with commas
+      const getIds = result.rows.map(id => (
         id.giphyId
       )).join(',')
 
       console.log(getIds);
 
       axios({
-        url:'https://api.giphy.com/v1/gifs',
-        method:'GET',
-        params:{
-          api_key:process.env.GIPHY_API_KEY,
+        url: 'https://api.giphy.com/v1/gifs',
+        method: 'GET',
+        params: {
+          api_key: process.env.GIPHY_API_KEY,
           ids: getIds
         }
-      }).then((response)=>{
-
+      }).then((response) => {
         console.log(response.data);
         res.send(response.data)
 
-      }).catch((err)=>{
-
-        console.log( err);
-
+      }).catch((err) => {
+        console.log(err);
       })
 
-    }).catch((err)=>{
-
+    }).catch((err) => {
       console.log('Get favorite_gift table failed', err);
-
       res.sendStatus(500)
-
     })
-
-  
 });
 
 // add a new favorite

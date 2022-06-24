@@ -1,14 +1,4 @@
-
-const FavoriteListItems = () => {
-  return <>Testing List Items</>;
-};
-
-export default FavoriteListItems;
-
-
-
 const FavoriteListItems = ({ fav }) => {
-
 
     return (
         <>   hi
@@ -26,5 +16,5 @@ const FavoriteListItems = ({ fav }) => {
     )
 }
 
-export default FavoriteListItems;
 
+export default FavoriteListItems;

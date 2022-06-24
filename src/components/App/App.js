@@ -1,15 +1,10 @@
 import React from 'react';
 import FavoriteGifs from '../FavoriteGifs/FavoriteGifs';
-
-import SearchGifs from '../SearchGifs/SearchGifs';
-import { useState } from 'react';
-
+import SearchForm from '../SearchForm/SearchForm';
+import SearchResultsList from '../SearchResultsList/SearchResultsList';
 import Header from '../Header/Header';
-import SearchGifs from '../SearchGifs/SearchGifs';
 import './App.css';
-
-
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useEffect } from 'react';
 
@@ -23,23 +18,18 @@ function App(props) {
       <div>
         <h1>Giphy Search!</h1>
       </div>
-      <FavoriteGifs />
-      <SearchGifs />
+      <Router>
+        <Header />
 
+        <Route path="/api/favorite" exact>
+          <FavoriteGifs />
+        </Route>
 
-    <Router>
-
-      <Header/>
-
-      <Route path="/api/favorite" exact>
-        <FavoriteGifs />
-      </Route>
-
-      <Route path="/api/search" exact>
-        <SearchGifs />
-      </Route>
-
-    </Router>
+        <Route path="/api/search" exact>
+          <SearchForm />
+          <SearchResultsList />
+        </Route>
+      </Router>
 
     </>
   );
