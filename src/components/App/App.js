@@ -24,8 +24,8 @@ function App(props) {
         </Route>
         <Route path="/api/search" exact>
           <SearchForm />
-        </Route>
         <SearchResultsList />
+        </Route>
       </Router>
 
     </>

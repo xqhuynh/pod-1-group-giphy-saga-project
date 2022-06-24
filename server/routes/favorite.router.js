@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   //variable to store query from favorite_gif
   const getFavorites = `
   SELECT "giphyId", "category".name from favorite_gif
-  JOIN category ON favorite_gif."categoryId" = category.id;
+  LEFT JOIN category ON favorite_gif."categoryId" = category.id;
   `
   pool.query(getFavorites)
     .then((result) => {
@@ -49,7 +49,19 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  res.sendStatus(200);
+  console.log('in router.post req.body is', req.body.giphy_id)
+  const sqlQuery = `
+    INSERT INTO "favorite_gif" ("giphyId")
+    VALUES ($1)`;
+
+    sqlParams = [req.body.giphy_id];
+
+  pool.query(sqlQuery, sqlParams)
+    .then(() => {res.sendStatus(201); })
+    .catch((err) => {
+      console.log('in pool.query post failed', err);
+      res.sendStatus(500);
+    });
 });
 
 // update given favorite with a category id

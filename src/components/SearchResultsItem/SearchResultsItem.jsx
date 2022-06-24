@@ -1,10 +1,16 @@
+import { useSelector, useDispatch } from "react-redux";
+
 const SearchResultsItem = (gif) => {
+    const dispatch = useDispatch();
+
   function addFavorite() {
+      console.log('in addFavorite', gif.gif.id)
     dispatch({
       type: "ADD_FAVORITE",
-      payload: gif.id,
+      payload: gif.gif.id,
     });
   }
+
   console.log("in SearchResultsItme", gif.gif.images.original.url);
   return (
     <>

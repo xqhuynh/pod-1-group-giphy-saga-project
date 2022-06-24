@@ -72,6 +72,16 @@ function* getFavoriteGifs(action) {
     })
 }
 
+function* addFavorite(action) {
+    console.log('in addFavorites', action.payload);
+    yield axios({
+        method: 'POST',
+        url: 'api/favorite',
+        data: {giphy_id: action.payload}
+    })
+    yield put({
+        type: 'GET_FAVORITE_GIFS'
+    })
 /*
     When addCategory is called it does axios
     put request and return favorite gifs with
@@ -80,7 +90,6 @@ function* getFavoriteGifs(action) {
 function* addCategory(action) {
 
     try{
-
         yield axios.put('/api/favorite/'+ action.payload.id)
 
     } catch(err){
@@ -89,7 +98,6 @@ function* addCategory(action) {
 
     yield put({
         type:'GET_FAVORITE_GIFS'
-
     })
     
 }
@@ -99,6 +107,7 @@ function* addCategory(action) {
 function* watcherSaga() {
     yield takeEvery('GET_FAVORITE_GIFS', getFavoriteGifs)
     yield takeEvery("FETCH_RESULTS", fetchResults)
+    yield takeEvery("ADD_FAVORITE", addFavorite)
     yield takeEvery("ADD_CATEGORY", addCategory)
 }
 
