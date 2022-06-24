@@ -77,11 +77,12 @@ function* addFavorite(action) {
     yield axios({
         method: 'POST',
         url: 'api/favorite',
-        data: {giphy_id: action.payload}
+        data: { giphy_id: action.payload }
     })
     yield put({
         type: 'GET_FAVORITE_GIFS'
     })
+}
 /*
     When addCategory is called it does axios
     put request and return favorite gifs with
@@ -89,17 +90,17 @@ function* addFavorite(action) {
 */
 function* addCategory(action) {
 
-    try{
-        yield axios.put('/api/favorite/'+ action.payload.id)
+    try {
+        yield axios.put('/api/favorite/' + action.payload.id)
 
-    } catch(err){
+    } catch (err) {
         console.log(err);
     }
 
     yield put({
-        type:'GET_FAVORITE_GIFS'
+        type: 'GET_FAVORITE_GIFS'
     })
-    
+
 }
 
 
@@ -126,10 +127,5 @@ const store = createStore(
 // Run saga middleware
 sagaMiddleware.run(watcherSaga);
 
-ReactDOM.render
-    (
-        <Provider store={store}>
-            <App />
-        </Provider>,
-        document.getElementById('root')
-    );
+ReactDOM.render(<Provider store={store}><App /></Provider>,
+    document.getElementById('root'))
