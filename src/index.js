@@ -10,13 +10,16 @@ import logger from 'redux-logger';
 import axios from 'axios';
 
 // watchersaga function*, will watch for actions
+// first action to watch is fetching data from api
 function* watcherSaga() {
     yield takeEvery("FETCH_RESULTS", fetchResults);
 }
 
+// Generator function to fetch results
+// payload is user input in search box 
 function* fetchResults(action) {
     try {
-        console.log("Payload is search input", action.payload);
+        console.log("Payload is search keyword:", action.payload);
         let searchTerm = action.payload;
         const response = yield axios.get(`/api/search/${searchTerm}`);
         //sends results to search reducer below
@@ -27,7 +30,8 @@ function* fetchResults(action) {
     }
 }
 
-// Reducer that holds our results w/ 'SET_RESULTS' dispatch type
+// Reducer that holds our results w/ 'SET_RESULTS' dispatch action
+// gets payload from fetchResults generator function
 const search = (state = [], action) => {
     switch (action.payload) {
         case 'SET_RESULTS':

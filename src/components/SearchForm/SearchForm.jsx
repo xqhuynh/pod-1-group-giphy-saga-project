@@ -8,6 +8,7 @@ function SearchForm() {
 
   // function to handle search button w/dispatch action
   // target text input field using evt.target.value
+  // payload will be useState
   const handleSearchClick = (evt) => {
     evt.preventDefault();
     dispatch({
@@ -20,11 +21,14 @@ function SearchForm() {
 
   return (
     <>
-      <h2>Testing Search Gifs component</h2>
+      {/* create form, input, button
+      handle clicks in form and button tag */}
+      <h2>Savon Testing Search Form</h2>
       <form onSubmit={handleSearchClick}>
+        {/* set onChange to useState initial value */}
         <input
           type="text"
-          placeholder="What to search for?"
+          placeholder="Search for GIF"
           value={searchInput}
           onChange={(evt) => setNewSearchInput(evt.target.value)}
         />

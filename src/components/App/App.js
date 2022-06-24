@@ -1,6 +1,7 @@
 import React from 'react';
 import FavoriteGifs from '../FavoriteGifs/FavoriteGifs';
 import SearchForm from '../SearchForm/SearchForm';
+import SearchResultsList from '../SearchResultsList/SearchResultsList';
 import Header from '../Header/Header';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,18 +10,7 @@ import { useEffect } from 'react';
 
 import { Route, HashRouter as Router, Link } from 'react-router-dom';
 
-
 function App(props) {
-  const dispatch = useDispatch();
-
-  // useEffect to render on page load
-  // also useful to see console for debugging on page load
-  useEffect(() => {
-    dispatch({
-      type: "FETCH_RESULTS",
-      payload: 'search-input'
-    })
-  }, []);
 
   return (
     <>
@@ -37,6 +27,7 @@ function App(props) {
 
         <Route path="/api/search" exact>
           <SearchForm />
+          <SearchResultsList />
         </Route>
       </Router>
 
